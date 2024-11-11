@@ -1,0 +1,18 @@
+<div class="form-sucursal-container">
+    <h2>{{ sucursalId ? 'Editar Sucursal' : 'Crear Sucursal' }}</h2>
+    <form [formGroup]="sucursalForm" (ngSubmit)="onSubmit()">
+      <div class="form-grid">
+        <div class="input-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" formControlName="nombre" placeholder="Ingrese el nombre de la sucursal" />
+        </div>
+  
+        <div class="input-group">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" formControlName="direccion" placeholder="Ingrese la dirección" />
+        </div>
+      </div>
+      <button type="submit">{{ sucursalId ? 'Actualizar' : 'Crear' }}</button>
+    </form>
+  </div>
+  

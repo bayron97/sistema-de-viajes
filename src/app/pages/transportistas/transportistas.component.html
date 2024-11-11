@@ -1,0 +1,32 @@
+<div class="transportistas-list-container">
+    <h2>Lista de Transportistas</h2>
+    <button class="nuevo-btn" (click)="navegarACrear()">Crear Nuevo Transportista</button>
+    <div class="transportistas-list">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Tarifa por Km</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transportista of transportistas">
+            <td>{{ transportista.transportistaId }}</td>
+            <td>{{ transportista.nombre }}</td>
+            <td>{{ transportista.tarifaPorKm }}</td>
+            <td>{{ transportista.telefono }}</td>
+            <td>{{ transportista.estado ? 'Activo' : 'Inactivo' }}</td>
+            <td>
+              <button (click)="navegarAEditar(transportista.transportistaId)">Editar</button>
+              <button (click)="deleteTransportista(transportista.transportistaId)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

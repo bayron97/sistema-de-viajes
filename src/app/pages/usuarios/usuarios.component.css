@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  .usuarios-list-container {
+    padding: 2rem;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    min-height: 100vh;
+    text-align: center;
+  }
+  
+  h2 {
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+  
+  .nuevo-btn {
+    background-color: #4e54c8;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .nuevo-btn:hover {
+    background-color: #3b42a6;
+  }
+  
+  .usuarios-list {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #4e54c8;
+    color: #fff;
+  }
+  
+  td button {
+    background-color: #4e54c8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+  }
+  
+  td button:hover {
+    background-color: #3b42a6;
+  }
+  

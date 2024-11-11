@@ -1,0 +1,33 @@
+<div class="empleados-list-container">
+    <h2>Lista de Empleados</h2>
+    <button class="nuevo-btn" (click)="navegarACrear()">Crear Nuevo Empleado</button>
+    
+    <div class="empleados-list">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleado of empleados">
+            <td>{{ empleado.empleadoId }}</td>
+            <td>{{ empleado.nombreEmpleado }}</td>
+            <td>{{ empleado.direccion }}</td>
+            <td>{{ empleado.telefono }}</td>
+            <td>{{ empleado.estado ? 'Activo' : 'Inactivo' }}</td>
+            <td>
+              <button (click)="navegarAEditar(empleado.empleadoId)">Editar</button>
+              <button (click)="deleteEmpleado(empleado.empleadoId)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

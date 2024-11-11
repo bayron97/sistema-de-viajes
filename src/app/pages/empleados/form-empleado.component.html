@@ -1,0 +1,31 @@
+<div class="form-empleado-container">
+    <h2>{{ empleadoId ? 'Editar Empleado' : 'Crear Empleado' }}</h2>
+    <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()">
+      <div class="form-grid">
+        <div class="input-group">
+          <label for="nombreEmpleado">Nombre de Empleado</label>
+          <input type="text" id="nombreEmpleado" formControlName="nombreEmpleado" placeholder="Ingrese el nombre del empleado" />
+        </div>
+  
+        <div class="input-group">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" formControlName="direccion" placeholder="Ingrese la dirección" />
+        </div>
+  
+        <div class="input-group">
+          <label for="telefono">Teléfono</label>
+          <input type="text" id="telefono" formControlName="telefono" placeholder="Ingrese el teléfono" />
+        </div>
+  
+        <div class="input-group">
+          <label for="estado">Estado</label>
+          <select id="estado" formControlName="estado">
+            <option [ngValue]=true>Activo</option>
+            <option [ngValue]=false>Inactivo</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit">{{ empleadoId ? 'Actualizar' : 'Crear' }}</button>
+    </form>
+  </div>
+  
