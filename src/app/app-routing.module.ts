@@ -11,6 +11,7 @@ import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { FormEmpleadoComponent } from './pages/empleados/form-empleado.component';
 import { FormTransportistaComponent } from './pages/transportistas/form-transportista.component';
 import { FormSucursalComponent } from './pages/sucursales/form-sucursal.component';
+import { FormAsignarSucursalComponent } from './pages/asignar-sucursales/form-asignar-sucursal.component';
 
 const routes: Routes = [
 
@@ -27,6 +28,8 @@ const routes: Routes = [
   { path: 'form-transportista', component: FormTransportistaComponent },
   { path: 'form-transportista/:id', component: FormTransportistaComponent },
   { path: 'asignar-sucursales', component: AsignarSucursalesComponent },
+  { path: 'form-asignar-sucursal', component: FormAsignarSucursalComponent },
+  { path: 'form-asignar-sucursal/:id', component: FormAsignarSucursalComponent },
   { path: 'empleados', component: EmpleadosComponent },
   { path: 'form-empleado', component: FormEmpleadoComponent },
   { path: 'form-empleado/:id', component: FormEmpleadoComponent },

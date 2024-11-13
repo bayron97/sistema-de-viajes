@@ -1,1 +1,31 @@
-<p>asignar-sucursales works!</p>
+<div class="asignar-sucursal-list-container">
+    <h2>Lista de Asignaciones de Sucursales</h2>
+    <button class="nuevo-btn" (click)="navegarACrear()">Crear Nueva Asignación</button>
+  
+    <div class="asignar-sucursal-list">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Empleado</th>
+            <th>Sucursal</th>
+            <th>Distancia (Km)</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asignacion of asignaciones">
+            <td>{{ asignacion.asignacionId }}</td>
+            <td>{{ asignacion.empleadoId }}</td>
+            <td>{{ asignacion.sucursalId }}</td>
+            <td>{{ asignacion.distanciaKm }}</td>
+            <td>
+              <button (click)="navegarAEditar(asignacion.asignacionId)">Editar</button>
+              <button (click)="deleteAsignacion(asignacion.asignacionId)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

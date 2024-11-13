@@ -11,6 +11,7 @@ import { FormUsuarioComponent } from './usuarios/form-usuario.component';
 import { FormEmpleadoComponent } from './empleados/form-empleado.component';
 import { FormTransportistaComponent } from './transportistas/form-transportista.component';
 import { FormSucursalComponent } from './sucursales/form-sucursal.component';
+import { FormAsignarSucursalComponent } from './asignar-sucursales/form-asignar-sucursal.component';
 
 
 
@@ -24,6 +25,7 @@ import { FormSucursalComponent } from './sucursales/form-sucursal.component';
     TransportistasComponent,
     FormTransportistaComponent,
     AsignarSucursalesComponent,
+    FormAsignarSucursalComponent,
     EmpleadosComponent,
     FormEmpleadoComponent
     
