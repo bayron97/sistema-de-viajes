@@ -16,8 +16,8 @@
         <tbody>
           <tr *ngFor="let asignacion of asignaciones">
             <td>{{ asignacion.asignacionId }}</td>
-            <td>{{ asignacion.empleadoId }}</td>
-            <td>{{ asignacion.sucursalId }}</td>
+            <td>{{ asignacion.nombreEmpleado }}</td>
+            <td>{{ asignacion.nombreSucursal }}</td>
             <td>{{ asignacion.distanciaKm }}</td>
             <td>
               <button (click)="navegarAEditar(asignacion.asignacionId)">Editar</button>

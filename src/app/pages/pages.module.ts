@@ -12,14 +12,19 @@ import { FormEmpleadoComponent } from './empleados/form-empleado.component';
 import { FormTransportistaComponent } from './transportistas/form-transportista.component';
 import { FormSucursalComponent } from './sucursales/form-sucursal.component';
 import { FormAsignarSucursalComponent } from './asignar-sucursales/form-asignar-sucursal.component';
+import { FormViajeComponent } from './viajes/form-viaje.component';
+import { MenuComponent } from '../menu/menu.component';
+import { ReportesComponent } from '../pages/reportes/reportes.component';
 
 
 
 @NgModule({
   declarations: [
+    MenuComponent,
     UsuariosComponent,
     FormUsuarioComponent,
     ViajesComponent,
+    FormViajeComponent,
     SucursalesComponent,
     FormSucursalComponent,
     TransportistasComponent,
@@ -27,7 +32,8 @@ import { FormAsignarSucursalComponent } from './asignar-sucursales/form-asignar-
     AsignarSucursalesComponent,
     FormAsignarSucursalComponent,
     EmpleadosComponent,
-    FormEmpleadoComponent
+    FormEmpleadoComponent,
+    ReportesComponent
     
   ],
   imports: [

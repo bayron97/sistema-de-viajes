@@ -1,0 +1,99 @@
+<form [formGroup]="viajeForm" (ngSubmit)="onSubmit()" class="form-container">
+  <h2>{{ viajeId ? 'Actualizar Viaje' : 'Registrar Viaje' }}</h2>
+
+  <!-- Campo Fecha -->
+  <div class="input-group">
+    <label for="fecha">Fecha</label>
+    <input type="date" id="fecha" formControlName="fecha">
+    <div *ngIf="viajeForm.get('fecha')?.invalid && viajeForm.get('fecha')?.touched" class="error-message">
+      La fecha es obligatoria.
+    </div>
+  </div>
+
+  <!-- Sucursal -->
+  <div class="input-group">
+    <label for="sucursalId">Sucursal</label>
+    <select id="sucursalId" formControlName="sucursalId" (change)="onSucursalChange()">
+      <option [selected]="true" [disabled]="true" value="">Seleccione sucursal</option>
+      <option *ngFor="let sucursal of sucursales" [value]="sucursal.id">
+        {{ sucursal.nombreSucursal }}
+      </option>
+    </select>
+    <div *ngIf="viajeForm.get('sucursalId')?.invalid && viajeForm.get('sucursalId')?.touched" class="error-message">
+      Seleccione una sucursal.
+    </div>
+  </div>
+
+  <!-- Transportista -->
+  <div class="input-group">
+    <label for="transportistaId">Transportista</label>
+    <select id="transportistaId" formControlName="transportistaId" (change)="onTransportistaChange()">
+      <option [selected]="true" [disabled]="true" value="">Seleccione transportista</option>
+      <option *ngFor="let transportista of transportistas" [value]="transportista.id">
+        {{ transportista.nombreTransportista }}
+      </option>
+    </select>
+    <div *ngIf="viajeForm.get('transportistaId')?.invalid && viajeForm.get('transportistaId')?.touched" class="error-message">
+      Seleccione un transportista.
+    </div>
+  </div>
+
+  <!-- Costo -->
+  <div class="input-group">
+    <label for="totalCosto">Costo Total</label>
+    <input type="number" id="totalCosto" formControlName="totalCosto" readonly>
+  </div>
+
+  <div class="input-group">
+    <label for="totalDistancia">Distancia Total</label>
+    <input type="number" id="totalDistancia" formControlName="totalDistancia" readonly>
+  </div>
+
+  <!-- Detalle del Viaje -->
+  <div formArrayName="detalleViajes" class="detalles-container">
+    <h3>Detalles del Viaje</h3>
+
+    <div *ngFor="let detalle of detalleViajesControls; let i = index" [formGroupName]="i" class="detalle-item">
+      <!-- Selección de Empleado -->
+      <div class="input-group">
+        <label for="empleado-{{i}}">Empleado</label>
+        <select id="empleado-{{i}}" formControlName="empleadoId" (change)="onEmpleadoChange(i)">
+          <option [selected]="true" [disabled]="true" value="">Seleccione empleado</option>
+          <option *ngFor="let empleado of empleados" [value]="empleado.empleadoId">
+            {{ empleado.nombreEmpleado }}
+          </option>
+        </select>
+        <div *ngIf="detalle.get('empleadoId')?.invalid && detalle.get('empleadoId')?.touched" class="error-message">
+          Seleccione un empleado.
+        </div>
+      </div>
+    
+      <!-- Distancia (solo lectura) -->
+      <div class="input-group">
+        <label for="distanciaKm-{{i}}">Distancia (Km)</label>
+        <input 
+          type="number" 
+          id="distanciaKm-{{i}}" 
+          formControlName="distanciaKm" 
+          placeholder="Distancia (Km)" 
+          readonly>
+        <div *ngIf="detalle.get('distanciaKm')?.invalid && detalle.get('distanciaKm')?.touched" class="error-message">
+          La distancia es obligatoria.
+        </div>
+      </div>
+    
+      <!-- Botón para eliminar detalle -->
+      <button type="button" (click)="removeDetalle(i)" class="btn btn-danger">Eliminar</button>
+    </div>
+    
+    <!-- Botón para añadir un nuevo detalle -->
+    <button type="button" (click)="addDetalle()" class="btn btn-primary">Agregar Detalle</button>
+  </div>
+
+  <!-- Botón de Submit -->
+  <div class="form-footer">
+    <button type="submit" [disabled]="viajeForm.invalid" class="btn btn-success">
+      {{ viajeId ? 'Actualizar Viaje' : 'Registrar Viaje' }}
+    </button>
+  </div>
+</form>

@@ -1,1 +1,31 @@
-<p>viajes works!</p>
+<div class="viajes-list-container">
+  <h2>Lista de Viajes</h2>
+  <button class="nuevo-btn" (click)="navegarACrear()">Crear Nuevo Viaje</button>
+  <div class="viajes-list">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fecha</th>
+          <th>Sucursal</th>
+          <th>Transportista</th>
+          <th>Total Distancia</th>
+          <th>Total Costo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let viaje of viajes">
+          <td>{{ viaje.viajeId }}</td>
+          <td>{{ viaje.fecha | date }}</td>
+          <td>{{  getSucursalName(viaje.sucursalId)}}</td>
+          <td>{{ getTransportistaName(viaje.transportistaId)}}</td>
+          <td>{{ viaje.totalDistancia }}</td>
+          <td>{{ viaje.totalCosto }}</td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  

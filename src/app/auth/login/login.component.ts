@@ -18,6 +18,7 @@ export class LoginComponent {
     private loginService: LoginService,
     private router: Router
   ) {
+    // Inicializar el formulario con validaciones
     this.loginForm = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
@@ -25,23 +26,37 @@ export class LoginComponent {
   }
 
   async onSubmit() {
-    if (this.loginForm.invalid) return;
+  if (this.loginForm.invalid) return;
 
-    const { usuario, password } = this.loginForm.value;
-    const loginData: Login = {
-      credencial: usuario,
-      password: password
-    };
+  const { usuario, password } = this.loginForm.value;
+  const loginData: Login = {
+    credencial: usuario,
+    password: password
+  };
 
-    try {
-      const response = await this.loginService.post('Usuario/login', loginData).toPromise();
-      if (response) {
+  try {
+    const response = await this.loginService.login('Usuario/login', loginData).toPromise();
+
+    if (response) {
+      
+      if (response.rol) {
+        
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('idUser', response.usuarioId);
+        localStorage.setItem('userRole', response.rol); 
+        localStorage.setItem('userName', response.nombreUsuario);
+        
         alert('Inicio de sesión exitoso');
-        this.router.navigate(['/viajes']);
+        this.router.navigate(['/menu']);
+      } else {
+        this.loginError = 'No se pudo obtener el rol del usuario.';
       }
-    } catch (error) {
-      console.error(error);
+    } else {
       this.loginError = 'Usuario o contraseña incorrectos.';
     }
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+    this.loginError = 'Error al iniciar sesión. Intente de nuevo más tarde.';
   }
+}
 }

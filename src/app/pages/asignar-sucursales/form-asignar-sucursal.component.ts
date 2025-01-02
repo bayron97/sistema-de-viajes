@@ -18,6 +18,7 @@ export class FormAsignarSucursalComponent implements OnInit {
   asignacionId: number | null = null;
   empleados: Empleado[] = [];
   sucursales: Sucursal[] = [];
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -30,7 +31,7 @@ export class FormAsignarSucursalComponent implements OnInit {
     this.asignacionForm = this.fb.group({
       empleadoId: ['', Validators.required],
       sucursalId: ['', Validators.required],
-      distanciaKm: ['', [Validators.required, Validators.min(1)]]
+      distanciaKm: ['', [Validators.required, Validators.min(1), Validators.max(50)]]
     });
   }
 
@@ -63,17 +64,35 @@ export class FormAsignarSucursalComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.asignacionForm.invalid) return;
 
-    const asignacion: AsignarSucursal = this.asignacionForm.value;
+    const asignacion = this.asignacionForm.value;
 
     if (this.asignacionId) {
+      // Actualizar asignación
       this.asignarSucursalService.updateAsignacion(this.asignacionId, asignacion)
-        .subscribe(() => this.router.navigate(['/asignar-sucursal']));
+        .subscribe(
+          () => this.router.navigate(['/asignar-sucursal']),
+          (error) => this.handleError(error)
+        );
     } else {
+      // Crear nueva asignación
       this.asignarSucursalService.createAsignacion(asignacion)
-        .subscribe(() => this.router.navigate(['/asignar-sucursal']));
+        .subscribe(
+          () => this.router.navigate(['/asignar-sucursal']),
+          (error) => this.handleError(error)
+        );
+    }
+  }
+
+  handleError(error: any): void {
+    
+    if (error.status === 400 && error.error.message === 'El empleado ya tiene esta sucursal asignada.') {
+      this.errorMessage = 'Este empleado ya está asignado a esta sucursal.';
+    } else {
+     
+      this.errorMessage = 'Ha ocurrido un error al procesar la solicitud.';
     }
   }
 }

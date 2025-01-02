@@ -20,6 +20,10 @@ export class EmpleadoService {
     return this.http.get<Empleado>(`${this.apiUrl}/${id}`);
   }
 
+  getEmpleadosBySucursal(sucursalId: number): Observable<Empleado[]> {
+    return this.http.get<Empleado[]>(`${this.apiUrl}/empleados/${sucursalId}`);
+  }
+
   createEmpleado(empleado: Empleado): Observable<Empleado> {
     return this.http.post<Empleado>(this.apiUrl, empleado);
   }
